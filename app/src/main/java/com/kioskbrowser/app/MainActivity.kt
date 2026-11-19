@@ -279,7 +279,9 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         CookieManager.getInstance().setAcceptCookie(true)
         CookieManager.getInstance().setAcceptThirdPartyCookies(wv, true)
         WebView.setWebContentsDebuggingEnabled(prefs.webDebugging)
-        wv.setBackgroundColor(android.graphics.Color.BLACK)
+        // Pages without their own CSS background expect the browser default (white).
+        // A black WebView background would render black text on black = "black screen".
+        wv.setBackgroundColor(if (main) android.graphics.Color.WHITE else android.graphics.Color.BLACK)
 
         if (main) {
             wv.removeJavascriptInterface("kiosk")
