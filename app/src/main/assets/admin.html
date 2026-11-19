@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiosk Remote Admin</title>
+<style>
+  :root { --bg:#f4f6f8; --card:#fff; --fg:#1d2733; --muted:#61707f; --accent:#1565c0; --border:#d8dee4; --danger:#c62828; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0f1720; --card:#17212c; --fg:#e3e9ef; --muted:#8fa0b0; --accent:#5c9df0; --border:#2a3642; --danger:#ef5350; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.45 system-ui,sans-serif; }
+  header { padding:14px 16px; background:var(--accent); color:#fff; display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; }
+  header h1 { margin:0; font-size:1.15rem; }
+  main { max-width:1100px; margin:0 auto; padding:16px; display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); }
+  section { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px; min-width:0; }
+  h2 { margin:0 0 12px; font-size:1rem; }
+  table { width:100%; border-collapse:collapse; font-size:.88rem; }
+  td { padding:3px 4px; border-bottom:1px solid var(--border); word-break:break-all; vertical-align:top; }
+  td:first-child { color:var(--muted); width:42%; word-break:normal; }
+  button { background:var(--accent); color:#fff; border:0; border-radius:6px; padding:8px 12px; cursor:pointer; font:inherit; margin:0 6px 6px 0; }
+  button.secondary { background:transparent; color:var(--accent); border:1px solid var(--accent); }
+  button.danger { background:var(--danger); }
+  input, textarea { width:100%; padding:8px; border:1px solid var(--border); border-radius:6px; background:var(--bg); color:var(--fg); font:inherit; }
+  textarea { font-family:ui-monospace,monospace; font-size:.8rem; min-height:320px; }
+  .row { display:flex; gap:8px; margin-bottom:8px; }
+  .row input { flex:1; }
+  img { max-width:100%; border-radius:6px; border:1px solid var(--border); display:block; margin-top:8px; }
+  #login { max-width:360px; margin:12vh auto; }
+  #msg { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); background:#323232; color:#fff; padding:8px 16px; border-radius:6px; display:none; }
+  .wide { grid-column:1/-1; }
+</style>
+</head>
+<body>
+<div id="login">
+  <section>
+    <h2>Kiosk Browser – Remote Admin</h2>
+    <p><input id="pw" type="password" placeholder="Password" autofocus></p>
+    <button onclick="login()">Login</button>
+  </section>
+</div>
+
+<div id="app" hidden>
+  <header><h1 id="title">Kiosk Browser</h1><button class="secondary" style="color:#fff;border-color:#fff" onclick="logout()">Logout</button></header>
+  <main>
+    <section>
+      <h2>Device</h2>
+      <table id="info"></table>
+      <p><button class="secondary" onclick="loadInfo()">Refresh</button></p>
+    </section>
+
+    <section>
+      <h2>Browser</h2>
+      <div class="row"><input id="url" placeholder="https://…"><button onclick="cmd('loadUrl',{url:val('url')})">Load</button></div>
+      <button onclick="cmd('loadStartUrl')">Start URL</button>
+      <button onclick="cmd('reload')">Reload</button>
+      <button onclick="cmd('goBack')">Back</button>
+      <button class="secondary" onclick="cmd('clearCache')">Clear cache</button>
+      <button class="secondary" onclick="cmd('clearCookies')">Clear cookies</button>
+      <div class="row" style="margin-top:8px"><input id="js" placeholder="JavaScript"><button onclick="cmd('runJs',{code:val('js')})">Run</button></div>
+    </section>
+
+    <section>
+      <h2>Screen &amp; sound</h2>
+      <button onclick="cmd('screenOn')">Screen on</button>
+      <button onclick="cmd('screenOff')">Screen off</button>
+      <button onclick="cmd('startScreensaver')">Screensaver on</button>
+      <button onclick="cmd('stopScreensaver')">Screensaver off</button>
+      <p>Brightness <input id="bright" type="range" min="0" max="255" onchange="cmd('setBrightness',{value:this.value})"></p>
+      <p>Volume <input id="vol" type="range" min="0" max="100" onchange="cmd('setVolume',{value:this.value})"></p>
+      <div class="row"><input id="tts" placeholder="Text to speech"><button onclick="cmd('speak',{text:val('tts')})">Speak</button></div>
+      <div class="row"><input id="toast" placeholder="Toast message"><button onclick="cmd('toast',{text:val('toast')})">Show</button></div>
+      <div class="row"><input id="sound" placeholder="Sound URL (mp3)"><button onclick="cmd('playSound',{url:val('sound')})">Play</button><button class="secondary" onclick="cmd('stopSound')">Stop</button></div>
+    </section>
+
+    <section>
+      <h2>App</h2>
+      <button onclick="cmd('toForeground')">Bring to foreground</button>
+      <button onclick="cmd('lockKiosk')">Lock kiosk</button>
+      <button class="secondary" onclick="cmd('unlockKiosk')">Unlock kiosk</button>
+      <button class="danger" onclick="if(confirm('Restart app?'))cmd('restartApp')">Restart app</button>
+      <button class="danger" onclick="if(confirm('Exit app?'))cmd('exitApp')">Exit app</button>
+    </section>
+
+    <section>
+      <h2>Screenshot</h2>
+      <button onclick="shot('screenshot','shotImg')">Take screenshot</button>
+      <img id="shotImg" alt="" hidden>
+    </section>
+
+    <section>
+      <h2>Camera</h2>
+      <button onclick="shot('camshot','camImg')">Camera snapshot</button>
+      <img id="camImg" alt="" hidden>
+    </section>
+
+    <section class="wide">
+      <h2>Settings (JSON)</h2>
+      <textarea id="settings" spellcheck="false"></textarea>
+      <p><button onclick="saveSettings()">Save settings</button><button class="secondary" onclick="loadSettings()">Reload</button></p>
+    </section>
+  </main>
+</div>
+<div id="msg"></div>
+
+<script>
+let PW = sessionStorage.getItem('kioskpw') || '';
+const val = id => document.getElementById(id).value;
+
+function toast(t) {
+  const m = document.getElementById('msg'); m.textContent = t; m.style.display = 'block';
+  clearTimeout(toast.t); toast.t = setTimeout(() => m.style.display = 'none', 2500);
+}
+
+async function api(path, opts = {}) {
+  opts.headers = Object.assign({'X-Password': PW}, opts.headers || {});
+  const r = await fetch(path, opts);
+  if (r.status === 401 || r.status === 403) {
+    const j = await r.json().catch(() => ({}));
+    throw new Error(j.message || 'unauthorized');
+  }
+  return r;
+}
+
+async function login() {
+  PW = val('pw');
+  try { await loadInfo(); sessionStorage.setItem('kioskpw', PW); show(true); loadSettings(); }
+  catch (e) { toast(e.message); }
+}
+function logout() { sessionStorage.removeItem('kioskpw'); PW = ''; show(false); }
+function show(app) { document.getElementById('app').hidden = !app; document.getElementById('login').hidden = app; }
+
+async function loadInfo() {
+  const j = await (await api('/api/info')).json();
+  const i = j.info, t = document.getElementById('info');
+  t.innerHTML = '';
+  for (const [k, v] of Object.entries(i)) {
+    const tr = t.insertRow(); tr.insertCell().textContent = k; tr.insertCell().textContent = String(v);
+  }
+  document.getElementById('title').textContent = i.deviceName + ' – ' + i.model;
+  if (i.brightness >= 0) document.getElementById('bright').value = i.brightness;
+  document.getElementById('vol').value = i.volume;
+}
+
+async function cmd(name, params = {}) {
+  try {
+    const q = new URLSearchParams(Object.assign({cmd: name}, params));
+    const j = await (await api('/api/cmd?' + q)).json();
+    toast(name + ': ' + (j.message || j.status));
+    setTimeout(() => loadInfo().catch(() => {}), 800);
+  } catch (e) { toast(e.message); }
+}
+
+async function shot(kind, imgId) {
+  try {
+    const r = await api('/api/' + kind);
+    if (!r.ok) { const j = await r.json(); toast(j.message); return; }
+    const img = document.getElementById(imgId);
+    if (img.src) URL.revokeObjectURL(img.src);
+    img.src = URL.createObjectURL(await r.blob()); img.hidden = false;
+  } catch (e) { toast(e.message); }
+}
+
+async function loadSettings() {
+  const j = await (await api('/api/settings')).json();
+  document.getElementById('settings').value = JSON.stringify(j.settings, null, 2);
+}
+
+async function saveSettings() {
+  try {
+    const body = JSON.stringify(JSON.parse(val('settings')));
+    const j = await (await api('/api/settings', {method: 'POST', headers: {'Content-Type': 'application/json'}, body})).json();
+    toast('Settings: ' + (j.message || j.status));
+  } catch (e) { toast(e.message); }
+}
+
+document.getElementById('pw').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+if (PW) loadInfo().then(() => { show(true); loadSettings(); }).catch(() => show(false));
+setInterval(() => { if (!document.getElementById('app').hidden) loadInfo().catch(() => {}); }, 15000);
+</script>
+</body>
+</html>

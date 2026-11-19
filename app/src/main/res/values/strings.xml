@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kiosk Browser</string>
+    <string name="settings_title">Kiosk settings</string>
+    <string name="notif_channel">Kiosk service</string>
+    <string name="notif_text">Kiosk running</string>
+    <string name="enter_pin">Enter PIN</string>
+    <string name="wrong_pin">Wrong PIN</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="menu_title">Kiosk menu</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_reload">Reload</string>
+    <string name="menu_home">Go to start URL</string>
+    <string name="menu_unlock">Leave kiosk mode (until restart)</string>
+    <string name="menu_exit">Exit app</string>
+    <string name="url_blocked">Blocked: %1$s</string>
+    <string name="load_error">Connection problem – retrying in %1$d s…</string>
+    <string name="exported">Settings exported</string>
+    <string name="imported">Settings imported</string>
+    <string name="import_failed">Import failed: %1$s</string>
+    <string name="device_owner_cmd">Device owner (full kiosk lock-down) can only be set via ADB on a device without accounts:\n\nadb shell dpm set-device-owner com.kioskbrowser.app/.KioskAdminReceiver\n\nCurrent state: %1$s</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+
+    <string name="cat_web">Web content</string>
+    <string name="cat_nav">Navigation &amp; reload</string>
+    <string name="cat_kiosk">Kiosk mode</string>
+    <string name="cat_display">Display</string>
+    <string name="cat_screensaver">Screensaver</string>
+    <string name="cat_schedule">Schedule</string>
+    <string name="cat_detection">Motion &amp; sound detection</string>
+    <string name="cat_remote">Remote administration</string>
+    <string name="cat_mqtt">MQTT / Home Assistant</string>
+    <string name="cat_device">Device &amp; startup</string>
+    <string name="cat_tools">Tools</string>
+
+    <string name="p_start_url">Start URL</string>
+    <string name="p_whitelist">URL whitelist</string>
+    <string name="p_whitelist_sum">One pattern per line, * as wildcard. Empty = everything allowed.</string>
+    <string name="p_blacklist">URL blacklist</string>
+    <string name="p_blacklist_sum">One pattern per line, * as wildcard.</string>
+    <string name="p_user_agent">Custom user agent</string>
+    <string name="p_desktop_mode">Desktop mode</string>
+    <string name="p_zoom">Allow pinch zoom</string>
+    <string name="p_text_zoom">Text zoom (%)</string>
+    <string name="p_autoplay">Autoplay audio/video</string>
+    <string name="p_web_cam_mic">Allow camera/microphone for websites (WebRTC)</string>
+    <string name="p_geo">Allow geolocation for websites</string>
+    <string name="p_downloads">Allow downloads</string>
+    <string name="p_ignore_ssl">Ignore SSL errors</string>
+    <string name="p_ignore_ssl_sum">Insecure – only for local self-signed servers</string>
+    <string name="p_web_debug">Remote WebView debugging (chrome://inspect)</string>
+    <string name="p_js_interface">JavaScript interface (window.kiosk)</string>
+    <string name="p_clear_cache">Clear cache on start</string>
+    <string name="p_block_external">Block external apps (tel:, mailto:, intent:)</string>
+
+    <string name="p_pull_refresh">Pull to refresh</string>
+    <string name="p_progress">Show progress bar</string>
+    <string name="p_reload_idle">Go to start URL after idle (s, 0 = off)</string>
+    <string name="p_reload_interval">Reload periodically (min, 0 = off)</string>
+    <string name="p_error_reload">Retry after load error (s, 0 = off)</string>
+    <string name="p_reload_network">Reload when network reconnects</string>
+
+    <string name="p_kiosk_mode">Enable kiosk mode</string>
+    <string name="p_kiosk_mode_sum">Block back/home/recents, open menu with hot corner + PIN</string>
+    <string name="p_pin">Settings PIN</string>
+    <string name="p_exit_taps">Taps in top-left corner to open menu</string>
+    <string name="p_lock_task">Use Android lock task / screen pinning</string>
+    <string name="p_force_fg">Bring app back to foreground</string>
+    <string name="p_force_fg_sum">Needs \"display over other apps\" permission or device owner</string>
+    <string name="p_disable_statusbar">Disable status bar (device owner)</string>
+    <string name="p_disable_keyguard">Disable lock screen (device owner)</string>
+
+    <string name="p_fullscreen">Fullscreen (hide system bars)</string>
+    <string name="p_keep_on">Keep screen on</string>
+    <string name="p_orientation">Screen orientation</string>
+    <string name="p_brightness">Screen brightness (0–255, -1 = system)</string>
+    <string name="p_screen_off_mode">Screen off method</string>
+
+    <string name="p_ss_timeout">Start screensaver after idle (s, 0 = off)</string>
+    <string name="p_ss_url">Screensaver URL (empty = clock)</string>
+    <string name="p_ss_brightness">Screensaver brightness (0–255, -1 = unchanged)</string>
+
+    <string name="p_sleep_time">Screen off at (HH:mm)</string>
+    <string name="p_wake_time">Screen on at (HH:mm)</string>
+
+    <string name="p_motion">Motion detection (camera)</string>
+    <string name="p_motion_camera">Camera</string>
+    <string name="p_motion_sens">Sensitivity (1–100)</string>
+    <string name="p_motion_wake">Turn screen on on motion</string>
+    <string name="p_motion_ss">Stop screensaver on motion</string>
+    <string name="p_sound">Acoustic detection (microphone)</string>
+    <string name="p_sound_threshold">Sound threshold (dB, 30–100)</string>
+
+    <string name="p_remote">Enable remote admin (web + REST API)</string>
+    <string name="p_remote_port">Port</string>
+    <string name="p_remote_pw">Password</string>
+
+    <string name="p_mqtt">Enable MQTT</string>
+    <string name="p_mqtt_url">Broker URL (tcp:// or ssl://)</string>
+    <string name="p_mqtt_user">Username</string>
+    <string name="p_mqtt_pw">Password</string>
+    <string name="p_mqtt_prefix">Topic prefix</string>
+    <string name="p_mqtt_ha">Home Assistant auto discovery</string>
+    <string name="p_mqtt_interval">State publish interval (s)</string>
+
+    <string name="p_device_name">Device name</string>
+    <string name="p_boot">Start on boot</string>
+    <string name="p_crash">Restart after crash</string>
+
+    <string name="a_permissions">Grant camera / microphone / location</string>
+    <string name="a_overlay">Allow \"display over other apps\"</string>
+    <string name="a_write_settings">Allow changing system settings (brightness)</string>
+    <string name="a_device_admin">Activate device admin (screen off / lock)</string>
+    <string name="a_device_owner">Device owner setup</string>
+    <string name="a_launcher">Set as home app (launcher)</string>
+    <string name="a_export">Export settings</string>
+    <string name="a_import">Import settings</string>
+    <string name="a_exit">Exit app</string>
+    <string name="a_about">About</string>
+
+    <string-array name="orientation_entries">
+        <item>Automatic</item>
+        <item>Portrait</item>
+        <item>Landscape</item>
+        <item>Reverse portrait</item>
+        <item>Reverse landscape</item>
+    </string-array>
+    <string-array name="orientation_values" translatable="false">
+        <item>auto</item>
+        <item>portrait</item>
+        <item>landscape</item>
+        <item>reverse_portrait</item>
+        <item>reverse_landscape</item>
+    </string-array>
+    <string-array name="screen_off_entries">
+        <item>Dim + black overlay (keeps camera running)</item>
+        <item>Lock device (device admin)</item>
+    </string-array>
+    <string-array name="screen_off_values" translatable="false">
+        <item>dim</item>
+        <item>lock</item>
+    </string-array>
+    <string-array name="camera_entries">
+        <item>Front</item>
+        <item>Back</item>
+    </string-array>
+    <string-array name="camera_values" translatable="false">
+        <item>front</item>
+        <item>back</item>
+    </string-array>
+</resources>

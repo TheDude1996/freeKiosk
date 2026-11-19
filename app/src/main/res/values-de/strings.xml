@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_title">Kiosk-Einstellungen</string>
+    <string name="notif_channel">Kiosk-Dienst</string>
+    <string name="notif_text">Kiosk läuft</string>
+    <string name="enter_pin">PIN eingeben</string>
+    <string name="wrong_pin">Falsche PIN</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="menu_title">Kiosk-Menü</string>
+    <string name="menu_settings">Einstellungen</string>
+    <string name="menu_reload">Neu laden</string>
+    <string name="menu_home">Zur Start-URL</string>
+    <string name="menu_unlock">Kiosk-Modus verlassen (bis Neustart)</string>
+    <string name="menu_exit">App beenden</string>
+    <string name="url_blocked">Blockiert: %1$s</string>
+    <string name="load_error">Verbindungsproblem – neuer Versuch in %1$d s…</string>
+    <string name="exported">Einstellungen exportiert</string>
+    <string name="imported">Einstellungen importiert</string>
+    <string name="import_failed">Import fehlgeschlagen: %1$s</string>
+    <string name="device_owner_cmd">Device Owner (vollständige Kiosk-Sperre) kann nur per ADB auf einem Gerät ohne Konten gesetzt werden:\n\nadb shell dpm set-device-owner com.kioskbrowser.app/.KioskAdminReceiver\n\nAktueller Status: %1$s</string>
+    <string name="yes">ja</string>
+    <string name="no">nein</string>
+
+    <string name="cat_web">Webinhalt</string>
+    <string name="cat_nav">Navigation &amp; Neuladen</string>
+    <string name="cat_kiosk">Kiosk-Modus</string>
+    <string name="cat_display">Anzeige</string>
+    <string name="cat_screensaver">Bildschirmschoner</string>
+    <string name="cat_schedule">Zeitplan</string>
+    <string name="cat_detection">Bewegungs- &amp; Geräuscherkennung</string>
+    <string name="cat_remote">Fernverwaltung</string>
+    <string name="cat_mqtt">MQTT / Home Assistant</string>
+    <string name="cat_device">Gerät &amp; Autostart</string>
+    <string name="cat_tools">Werkzeuge</string>
+
+    <string name="p_start_url">Start-URL</string>
+    <string name="p_whitelist">URL-Whitelist</string>
+    <string name="p_whitelist_sum">Ein Muster pro Zeile, * als Platzhalter. Leer = alles erlaubt.</string>
+    <string name="p_blacklist">URL-Blacklist</string>
+    <string name="p_blacklist_sum">Ein Muster pro Zeile, * als Platzhalter.</string>
+    <string name="p_user_agent">Eigener User-Agent</string>
+    <string name="p_desktop_mode">Desktop-Modus</string>
+    <string name="p_zoom">Zoomen erlauben</string>
+    <string name="p_text_zoom">Textgröße (%)</string>
+    <string name="p_autoplay">Audio/Video automatisch abspielen</string>
+    <string name="p_web_cam_mic">Kamera/Mikrofon für Webseiten erlauben (WebRTC)</string>
+    <string name="p_geo">Standort für Webseiten erlauben</string>
+    <string name="p_downloads">Downloads erlauben</string>
+    <string name="p_ignore_ssl">SSL-Fehler ignorieren</string>
+    <string name="p_ignore_ssl_sum">Unsicher – nur für lokale Server mit eigenem Zertifikat</string>
+    <string name="p_web_debug">WebView-Debugging (chrome://inspect)</string>
+    <string name="p_js_interface">JavaScript-Schnittstelle (window.kiosk)</string>
+    <string name="p_clear_cache">Cache beim Start leeren</string>
+    <string name="p_block_external">Externe Apps blockieren (tel:, mailto:, intent:)</string>
+
+    <string name="p_pull_refresh">Zum Aktualisieren ziehen</string>
+    <string name="p_progress">Ladebalken anzeigen</string>
+    <string name="p_reload_idle">Nach Inaktivität zur Start-URL (s, 0 = aus)</string>
+    <string name="p_reload_interval">Regelmäßig neu laden (min, 0 = aus)</string>
+    <string name="p_error_reload">Nach Ladefehler erneut versuchen (s, 0 = aus)</string>
+    <string name="p_reload_network">Neu laden bei Netzwerk-Wiederverbindung</string>
+
+    <string name="p_kiosk_mode">Kiosk-Modus aktivieren</string>
+    <string name="p_kiosk_mode_sum">Zurück/Home/Übersicht sperren, Menü über Ecke + PIN</string>
+    <string name="p_pin">Einstellungs-PIN</string>
+    <string name="p_exit_taps">Anzahl Tipps oben links für das Menü</string>
+    <string name="p_lock_task">Android Lock-Task / Bildschirmfixierung nutzen</string>
+    <string name="p_force_fg">App automatisch in den Vordergrund holen</string>
+    <string name="p_force_fg_sum">Benötigt \"Über anderen Apps einblenden\" oder Device Owner</string>
+    <string name="p_disable_statusbar">Statusleiste deaktivieren (Device Owner)</string>
+    <string name="p_disable_keyguard">Sperrbildschirm deaktivieren (Device Owner)</string>
+
+    <string name="p_fullscreen">Vollbild (Systemleisten ausblenden)</string>
+    <string name="p_keep_on">Bildschirm anlassen</string>
+    <string name="p_orientation">Bildschirmausrichtung</string>
+    <string name="p_brightness">Helligkeit (0–255, -1 = System)</string>
+    <string name="p_screen_off_mode">Methode zum Ausschalten</string>
+
+    <string name="p_ss_timeout">Bildschirmschoner nach Inaktivität (s, 0 = aus)</string>
+    <string name="p_ss_url">Bildschirmschoner-URL (leer = Uhr)</string>
+    <string name="p_ss_brightness">Helligkeit im Bildschirmschoner (0–255, -1 = unverändert)</string>
+
+    <string name="p_sleep_time">Bildschirm aus um (HH:mm)</string>
+    <string name="p_wake_time">Bildschirm an um (HH:mm)</string>
+
+    <string name="p_motion">Bewegungserkennung (Kamera)</string>
+    <string name="p_motion_camera">Kamera</string>
+    <string name="p_motion_sens">Empfindlichkeit (1–100)</string>
+    <string name="p_motion_wake">Bei Bewegung Bildschirm einschalten</string>
+    <string name="p_motion_ss">Bei Bewegung Bildschirmschoner beenden</string>
+    <string name="p_sound">Geräuscherkennung (Mikrofon)</string>
+    <string name="p_sound_threshold">Geräusch-Schwelle (dB, 30–100)</string>
+
+    <string name="p_remote">Fernverwaltung aktivieren (Web + REST-API)</string>
+    <string name="p_remote_port">Port</string>
+    <string name="p_remote_pw">Passwort</string>
+
+    <string name="p_mqtt">MQTT aktivieren</string>
+    <string name="p_mqtt_url">Broker-URL (tcp:// oder ssl://)</string>
+    <string name="p_mqtt_user">Benutzername</string>
+    <string name="p_mqtt_pw">Passwort</string>
+    <string name="p_mqtt_prefix">Topic-Präfix</string>
+    <string name="p_mqtt_ha">Home Assistant Auto-Discovery</string>
+    <string name="p_mqtt_interval">Status-Intervall (s)</string>
+
+    <string name="p_device_name">Gerätename</string>
+    <string name="p_boot">Beim Hochfahren starten</string>
+    <string name="p_crash">Nach Absturz neu starten</string>
+
+    <string name="a_permissions">Kamera / Mikrofon / Standort erlauben</string>
+    <string name="a_overlay">\"Über anderen Apps einblenden\" erlauben</string>
+    <string name="a_write_settings">Systemeinstellungen ändern erlauben (Helligkeit)</string>
+    <string name="a_device_admin">Geräteadministrator aktivieren (Bildschirm aus / sperren)</string>
+    <string name="a_device_owner">Device-Owner-Einrichtung</string>
+    <string name="a_launcher">Als Startbildschirm-App festlegen</string>
+    <string name="a_export">Einstellungen exportieren</string>
+    <string name="a_import">Einstellungen importieren</string>
+    <string name="a_exit">App beenden</string>
+    <string name="a_about">Über</string>
+
+    <string-array name="orientation_entries">
+        <item>Automatisch</item>
+        <item>Hochformat</item>
+        <item>Querformat</item>
+        <item>Hochformat umgekehrt</item>
+        <item>Querformat umgekehrt</item>
+    </string-array>
+    <string-array name="screen_off_entries">
+        <item>Abdunkeln + schwarze Ebene (Kamera läuft weiter)</item>
+        <item>Gerät sperren (Geräteadministrator)</item>
+    </string-array>
+    <string-array name="camera_entries">
+        <item>Vorne</item>
+        <item>Hinten</item>
+    </string-array>
+</resources>

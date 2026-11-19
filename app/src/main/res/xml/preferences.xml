@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/cat_web" app:iconSpaceReserved="false">
+        <EditTextPreference app:key="start_url" app:title="@string/p_start_url" app:defaultValue="file:///android_asset/welcome.html" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="url_whitelist" app:title="@string/p_whitelist" app:summary="@string/p_whitelist_sum" app:defaultValue="" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="url_blacklist" app:title="@string/p_blacklist" app:summary="@string/p_blacklist_sum" app:defaultValue="" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="user_agent" app:title="@string/p_user_agent" app:defaultValue="" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="desktop_mode" app:title="@string/p_desktop_mode" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="enable_zoom" app:title="@string/p_zoom" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="text_zoom" app:title="@string/p_text_zoom" app:defaultValue="100" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="autoplay_media" app:title="@string/p_autoplay" app:defaultValue="true" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="allow_web_cam_mic" app:title="@string/p_web_cam_mic" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="allow_geolocation" app:title="@string/p_geo" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="allow_downloads" app:title="@string/p_downloads" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="block_external_apps" app:title="@string/p_block_external" app:defaultValue="true" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="ignore_ssl_errors" app:title="@string/p_ignore_ssl" app:summary="@string/p_ignore_ssl_sum" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="js_interface" app:title="@string/p_js_interface" app:defaultValue="true" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="web_debugging" app:title="@string/p_web_debug" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="clear_cache_on_start" app:title="@string/p_clear_cache" app:defaultValue="false" app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_nav" app:iconSpaceReserved="false">
+        <SwitchPreferenceCompat app:key="pull_to_refresh" app:title="@string/p_pull_refresh" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="show_progress" app:title="@string/p_progress" app:defaultValue="true" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="reload_on_idle_sec" app:title="@string/p_reload_idle" app:defaultValue="0" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="reload_interval_min" app:title="@string/p_reload_interval" app:defaultValue="0" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="error_reload_sec" app:title="@string/p_error_reload" app:defaultValue="15" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="reload_on_network" app:title="@string/p_reload_network" app:defaultValue="true" app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_kiosk" app:iconSpaceReserved="false">
+        <SwitchPreferenceCompat app:key="kiosk_mode" app:title="@string/p_kiosk_mode" app:summary="@string/p_kiosk_mode_sum" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="settings_pin" app:title="@string/p_pin" app:defaultValue="1234" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="exit_taps" app:title="@string/p_exit_taps" app:defaultValue="5" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="lock_task" app:title="@string/p_lock_task" app:defaultValue="true" app:dependency="kiosk_mode" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="force_foreground" app:title="@string/p_force_fg" app:summary="@string/p_force_fg_sum" app:defaultValue="false" app:dependency="kiosk_mode" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="disable_status_bar" app:title="@string/p_disable_statusbar" app:defaultValue="true" app:dependency="kiosk_mode" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="disable_keyguard" app:title="@string/p_disable_keyguard" app:defaultValue="false" app:dependency="kiosk_mode" app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_display" app:iconSpaceReserved="false">
+        <SwitchPreferenceCompat app:key="fullscreen" app:title="@string/p_fullscreen" app:defaultValue="true" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="keep_screen_on" app:title="@string/p_keep_on" app:defaultValue="true" app:iconSpaceReserved="false" />
+        <ListPreference app:key="orientation" app:title="@string/p_orientation" app:entries="@array/orientation_entries" app:entryValues="@array/orientation_values" app:defaultValue="auto" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="brightness" app:title="@string/p_brightness" app:defaultValue="-1" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <ListPreference app:key="screen_off_mode" app:title="@string/p_screen_off_mode" app:entries="@array/screen_off_entries" app:entryValues="@array/screen_off_values" app:defaultValue="dim" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_screensaver" app:iconSpaceReserved="false">
+        <EditTextPreference app:key="screensaver_timeout_sec" app:title="@string/p_ss_timeout" app:defaultValue="0" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="screensaver_url" app:title="@string/p_ss_url" app:defaultValue="" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="screensaver_brightness" app:title="@string/p_ss_brightness" app:defaultValue="-1" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_schedule" app:iconSpaceReserved="false">
+        <EditTextPreference app:key="sleep_time" app:title="@string/p_sleep_time" app:defaultValue="" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="wake_time" app:title="@string/p_wake_time" app:defaultValue="" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_detection" app:iconSpaceReserved="false">
+        <SwitchPreferenceCompat app:key="motion_detection" app:title="@string/p_motion" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <ListPreference app:key="motion_camera" app:title="@string/p_motion_camera" app:entries="@array/camera_entries" app:entryValues="@array/camera_values" app:defaultValue="front" app:useSimpleSummaryProvider="true" app:dependency="motion_detection" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="motion_sensitivity" app:title="@string/p_motion_sens" app:defaultValue="50" app:useSimpleSummaryProvider="true" app:dependency="motion_detection" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="motion_wake_screen" app:title="@string/p_motion_wake" app:defaultValue="true" app:dependency="motion_detection" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="motion_stop_screensaver" app:title="@string/p_motion_ss" app:defaultValue="true" app:dependency="motion_detection" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="sound_detection" app:title="@string/p_sound" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="sound_threshold_db" app:title="@string/p_sound_threshold" app:defaultValue="70" app:useSimpleSummaryProvider="true" app:dependency="sound_detection" app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_remote" app:iconSpaceReserved="false">
+        <SwitchPreferenceCompat app:key="remote_admin_enabled" app:title="@string/p_remote" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="remote_admin_port" app:title="@string/p_remote_port" app:defaultValue="2323" app:useSimpleSummaryProvider="true" app:dependency="remote_admin_enabled" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="remote_admin_password" app:title="@string/p_remote_pw" app:defaultValue="" app:dependency="remote_admin_enabled" app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_mqtt" app:iconSpaceReserved="false">
+        <SwitchPreferenceCompat app:key="mqtt_enabled" app:title="@string/p_mqtt" app:defaultValue="false" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="mqtt_url" app:title="@string/p_mqtt_url" app:defaultValue="tcp://192.168.1.10:1883" app:useSimpleSummaryProvider="true" app:dependency="mqtt_enabled" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="mqtt_user" app:title="@string/p_mqtt_user" app:defaultValue="" app:useSimpleSummaryProvider="true" app:dependency="mqtt_enabled" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="mqtt_password" app:title="@string/p_mqtt_pw" app:defaultValue="" app:dependency="mqtt_enabled" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="mqtt_prefix" app:title="@string/p_mqtt_prefix" app:defaultValue="kiosk" app:useSimpleSummaryProvider="true" app:dependency="mqtt_enabled" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="mqtt_ha_discovery" app:title="@string/p_mqtt_ha" app:defaultValue="true" app:dependency="mqtt_enabled" app:iconSpaceReserved="false" />
+        <EditTextPreference app:key="mqtt_state_interval_sec" app:title="@string/p_mqtt_interval" app:defaultValue="60" app:useSimpleSummaryProvider="true" app:dependency="mqtt_enabled" app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_device" app:iconSpaceReserved="false">
+        <EditTextPreference app:key="device_name" app:title="@string/p_device_name" app:defaultValue="Kiosk" app:useSimpleSummaryProvider="true" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="start_on_boot" app:title="@string/p_boot" app:defaultValue="true" app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat app:key="restart_on_crash" app:title="@string/p_crash" app:defaultValue="true" app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_tools" app:iconSpaceReserved="false">
+        <Preference app:key="action_permissions" app:title="@string/a_permissions" app:iconSpaceReserved="false" />
+        <Preference app:key="action_overlay" app:title="@string/a_overlay" app:iconSpaceReserved="false" />
+        <Preference app:key="action_write_settings" app:title="@string/a_write_settings" app:iconSpaceReserved="false" />
+        <Preference app:key="action_device_admin" app:title="@string/a_device_admin" app:iconSpaceReserved="false" />
+        <Preference app:key="action_device_owner" app:title="@string/a_device_owner" app:iconSpaceReserved="false" />
+        <Preference app:key="action_launcher" app:title="@string/a_launcher" app:iconSpaceReserved="false" />
+        <Preference app:key="action_export" app:title="@string/a_export" app:iconSpaceReserved="false" />
+        <Preference app:key="action_import" app:title="@string/a_import" app:iconSpaceReserved="false" />
+        <Preference app:key="action_exit" app:title="@string/a_exit" app:iconSpaceReserved="false" />
+        <Preference app:key="action_about" app:title="@string/a_about" app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

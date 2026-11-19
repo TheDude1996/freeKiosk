@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiosk Browser</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+         background:#0d1b2a; color:#e0e6ed; font-family:system-ui,sans-serif; }
+  .card { max-width:640px; padding:32px; }
+  h1 { margin:0 0 8px; font-size:2rem; }
+  .muted { color:#8fa3b8; }
+  code { background:#1b2b3d; padding:2px 6px; border-radius:4px; }
+  li { margin:6px 0; }
+  #info { margin-top:18px; font-size:.9rem; color:#8fa3b8; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Kiosk Browser</h1>
+  <p class="muted">Welcome! / Willkommen!</p>
+  <ol>
+    <li>Tap the <b>top-left corner 5×</b> quickly to open the menu (default PIN <code>1234</code>).<br>
+        <span class="muted">Ecke oben links 5× schnell antippen, um das Menü zu öffnen.</span></li>
+    <li>Set your <b>start URL</b>, PIN and kiosk options in the settings.<br>
+        <span class="muted">Start-URL, PIN und Kiosk-Optionen in den Einstellungen festlegen.</span></li>
+    <li>Optional: enable remote admin, MQTT and motion detection.</li>
+  </ol>
+  <div id="info"></div>
+</div>
+<script>
+  if (window.kiosk) {
+    var i = JSON.parse(kiosk.getDeviceInfo());
+    document.getElementById('info').textContent =
+      i.deviceName + ' · ' + i.manufacturer + ' ' + i.model + ' · Android ' + i.androidVersion +
+      ' · IP ' + i.ip + ' · ' + i.batteryLevel + '%';
+  }
+</script>
+</body>
+</html>
